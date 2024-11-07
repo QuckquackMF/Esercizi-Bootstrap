@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Kampf Book Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+
+    * {
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      width: 100%;
+      overflow-x: hidden; /* Ensure no horizontal scrolling */
+    }
+
+    body, .container {
+      overflow-x: hidden; /* Prevent horizontal scroll for body and main containers */
+    }
+
+    /* Ensure h5 doesn't cause any scrollbars */
+    h5 {
+      overflow: visible; /* Prevent overflow on h5 titles */
+      white-space: normal; /* Prevent long text from overflowing */
+      word-wrap: break-word; /* Break long words onto the next line if needed */
+      margin: 0; /* Reset margin if necessary */
+    }
+
+    /* Additional adjustments for any other title/heading elements */
+    h1, h2, h3, h4, h5, h6 {
+      overflow: visible;
+      white-space: normal;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      width: 100%;
+      padding-left: 15px;
+      padding-right: 15px; /* Adjust padding on smaller screens */
+    }
+
+    .navbar, .footer {
+      width: 100%;
+    }
+
+    .some-wide-element {
+      width: 100%;
+      max-width: 100%; /* Prevents overflow */
+    }
+
+    body {
+      overflow: visible !important; /* Remove the overflow hidden on body */
+    }
+
+    .navbar.sticky-top {
+      position: sticky;
+      top: 0;
+      z-index: 1020;
+      background-color: #f8f9fa;  /* Optional */
+    }
+
+    .navbar-brand {
+      font-family: serif;
+      font-style: italic;
+      font-size: 1.25rem;
+    }
+    .navbar {
+      background-color: #f8f9fa;
+    }
+    .navbar-logo {
+      margin-right: 15px;
+    }
+    .hero {
+      background-color: #f8f9fa;
+      padding: 60px 0;
+    }
+    .body-background {
+        background-color: #f8f9fa;
+    }
+    .hero img {
+      max-width: 100%;
+      height: auto;
+    }
+    .hero h1 {
+      font-weight: bold;
+    }
+    .btn-download {
+      background-color: #343a40;
+      color: #fff;
+    }
+    .btn-download:hover {
+      background-color: #495057;
+    }
+
+    .navbar-logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .section-title {
+      font-weight: bold;
+    }
+    .chapter-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .chapter-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+      color: #6c757d;
+      cursor: pointer;
+    }
+    .chapter-list li::before {
+      content: '';
+      position: absolute;
+      left: 0.5rem;
+      top: 0.5rem;
+      width: 8px;
+      height: 8px;
+      background-color: #6c757d;
+      border-radius: 50%;
+    }
+    .chapter-list li.active {
+      font-weight: bold;
+      color: #000;
+    }
+    .chapter-list li.active::before {
+      background-color: #000;
+    }
+    .chapter-box {
+      border: 1px solid #dee2e6;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+    }
+    .chapter-box h5 {
+      font-weight: bold;
+    }
+    .chapter-icon {
+      background-color: #f8f9fa;
+      border-radius: 0.25rem;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-left: 1rem;
+    }
+    .benefit-icon {
+      font-size: 3rem;
+      color: #6c757d;
+    }
+    .benefit-title {
+      font-weight: bold;
+    }
+    .testimonial img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
+    .author img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+    .social-icons a {
+      font-size: 1.25rem;
+      margin: 0 10px;
+      color: #6c757d;
+    }
+    .social-icons a:hover {
+      color: #343a40;
+    }
+    .author h2 {
+      font-weight: bold;
+    }
+
+    .author p {
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .author-image {
+      max-width: 150px;
+      height: auto;
+      border-radius: 50%;
+      background-color: #f1f3f5;
+    }
+
+    .insert-emoticon-icon-1 {
+      width: 32px;
+      height: 32px;
+      background: #9FAFC1;
+    }
+
+    .footer {
+      background-color: #f8f9fa; /* Light gray background */
+      padding: 1rem 0;
+      border-top: 1px solid #dee2e6; /* Optional border at the top of footer */
+    }
+
+    .footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap; /* Allows items to stack if the screen is too narrow */
+    }
+
+    .footer .social-icons a {
+      font-size: 1.25rem;
+      color: #343a40; /* Dark color for social icons */
+      margin: 0 0.5rem;
+    }
+
+    .footer .social-icons a:hover {
+      color: #495057; /* Slightly lighter color on hover */
+    }
+
+    .footer-logo img {
+      max-width: 50px; /* Control logo size */
+      text-align: center;
+    }
+
+    .footer .copyright {
+      font-size: 0.875rem;
+      color: #6c757d; /* Muted gray for copyright text */
+    }
+
+    .download-section {
+      background-color: #f1f3f5; /* Light gray background for contrast */
+      padding: 2rem 1rem;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: #343a40; /* Dark color for title */
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: #6c757d; /* Muted color for subtitle */
+      margin-bottom: 1.5rem;
+    }
+
+    .download-btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      background-color: #343a40;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+    }
+
+    .download-btn:hover {
+      background-color: #6c757d; /* Darker shade on hover */
+    }
+
+  </style>
+</head>
+<body class="body-background">
+
+   <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Der Anfang</a> <!-- Left-aligned brand name -->
+      <a class="navbar-logo" href="#">
+        <img src="logo.png" alt="Mein Kampf Logo" width="50" height="50">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero container d-flex flex-column align-items-center">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-12 text-center">
+        <br /><h1>Mein Kampf</h1>
+        <p>Download this free e-book to gain a deeper understanding of one of history's most controversial works, examined through a modern, analytical lens. <i>Mein Kampf</i> serves as a critical resource for historians, students, and anyone interested in understanding the sociopolitical dynamics that shaped the 20th century.</p>
+        <a href="#" class="btn btn-download mt-3">DOWNLOAD NOW</a>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+        <img src="meinkampf.png" alt="Book Cover" class="img-fluid" height="250px" width="250px">
+      </div>
+    </div>
+  </section>
+
+  <!-- What's Inside Section -->
+  <section class="container my-5">
+    <h2 class="text-center section-title">What's Inside?</h2>
+    <p class="text-center text-muted">Mein Kampf is a two-part book by Adolf Hitler, outlining his ideology and vision for Germany.</p>
+
+    <div class="row mt-4">
+      <!-- Chapter List -->
+      <div class="col-lg-4 col-md-5 col-sm-12">
+        <ul class="chapter-list">
+          <li onclick="showChapter(1)" id="chapter1" class="active">01. Chapter One</li>
+          <li onclick="showChapter(2)" id="chapter2">02. Chapter Two</li>
+          <li onclick="showChapter(3)" id="chapter3">03. Chapter Three</li>
+          <li onclick="showChapter(4)" id="chapter4">04. Chapter Four</li>
+        </ul>
+      </div>
+
+      <!-- Chapter Content -->
+      <div class="col-lg-8 col-md-7 col-sm-12">
+        <div id="chapterContent" class="chapter-box">
+          <div>
+            <h5>Chapter One</h5>
+            <p>Hitler's early life and formative experiences, focusing on his upbringing, family, and initial interest in politics and nationalism. He describes how these experiences shaped his worldview and ambitions for Germany's future.</p>
+          </div>
+          <div class="chapter-icon">
+            <span><img src="kidhitler.jpeg" height="200px"></span> <!-- Placeholder for an icon or image -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="container text-center my-5">
+    <h2 class="section-title">Benefits</h2>
+    <p class="text-muted">What are some of the benefits?</p>
+
+    <div class="row mt-4">
+      <!-- Benefit 1 -->
+      <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+        <div class="d-flex flex-column align-items-center">
+          <img src="smiley.png" height="100px" width="130px"></img>
+          <h5 class="benefit-title mt-3">Benefit 1</h5>
+          <p class="text-muted">Learning about the life of one of the most famous dictator in the world.</p>
+        </div>
+      </div>
+
+      <!-- Benefit 2 -->
+      <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+        <div class="d-flex flex-column align-items-center">
+          <img src="smiley.png" height="100px" width="130px"></img>
+          <h5 class="benefit-title mt-3">Benefit 2</h5>
+          <p class="text-muted">The thoughts and the ideas that shaped the 20th century.</p>
+        </div>
+      </div>
+
+      <!-- Benefit 3 -->
+      <div class="col-lg-4 col-md-4 col-sm-12 mb-4">
+        <div class="d-flex flex-column align-items-center">
+          <img src="smiley.png" height="100px" width="130px"></img>
+          <h5 class="benefit-title mt-3">Benefit 3</h5>
+          <p class="text-muted">Learning our history so it can never be repeated again.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials text-center my-5">
+    <h2>What Our Customers Say?</h2>
+    <div class="container">
+      <div class="row">
+        <!-- Testimonial 1 -->
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <div class="testimonial">
+            <img src="leo.jpg" class="rounded-circle mb-3" alt="Customer 1">
+            <p>I recommend this book to be used in school to teach the children about the ideas of this important historical figure.</p>
+            <h6 class="font-weight-bold">Leonardo Matta</h6>
+            <p class="text-muted">JavaScript Programmer</p>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <div class="testimonial">
+            <img src="ceo_of_fascism.jpg" class="rounded-circle mb-3" alt="Customer 2">
+            <p>His favorite book for what it represents and a big fan of the creator.</p>
+            <h6 class="font-weight-bold">Simone Marro</h6>
+            <p class="text-muted">Professional Fascist</p>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="col-lg-4 col-md-4 col-sm-12">
+          <div class="testimonial">
+            <img src="carlo.jpg" class="rounded-circle mb-3" alt="Customer 3">
+            <p>A different book from the others.</p>
+            <h6 class="font-weight-bold">Carlo Laguda</h6>
+            <p class="text-muted">Data Scientist</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Author Section -->
+<section class="author my-5">
+  <div class="container">
+    <h2 class="text-left">The Author</h2>
+    <div class="row align-items-center">
+      <!-- Text Section -->
+      <div class="col-lg-8 col-md-7 col-sm-12">
+        <p><strong>Adolf Hitler</strong>, <em>Dictator of Germany</em></p>
+        <p>This book talks about the life and the ideas of one of the most famous dictators in Germany.</p>
+        <p>There has been a lot of controversy about republishing this book but in 2015 it was decided to publish it.</p>
+      </div>
+      <!-- Image Section -->
+      <div class="col-lg-4 col-md-5 col-sm-12">
+        <img src="Hitler_portrait_crop.jpg" alt="Author" class="img-fluid rounded-circle author-image">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Download Section -->
+<section class="download-section text-center py-5">
+  <h2 class="section-title">Get Your E-book Today!</h2>
+  <p class="section-subtitle">Get this book right now to learn some of the most controversial ideas that shaped the 20th century.</p>
+  <a href="ebook-download-link.pdf" class="btn btn-primary download-btn">Download Now</a>
+</section>
+
+<footer class="footer py-4">
+  <div class="container d-flex justify-content-between align-items-center">
+    
+    <!-- Social Icons on the Left -->
+    <div class="social-icons d-flex justify-content-start">
+      <a href="#" class="mx-2"><i class="bi bi-twitter"></i></a>
+      <a href="#" class="mx-2"><i class="bi bi-instagram"></i></a>
+      <a href="#" class="mx-2"><i class="bi bi-facebook"></i></a>
+    </div>
+    
+    <!-- Logo in the Center -->
+    <div class="footer-logo d-flex justify-content-center">
+      <img src="logo.png" alt="Mein Kampf Logo" width="50">
+    </div>
+    
+    <!-- Copyright Text on the Right -->
+    <div class="copyright text-muted d-flex justify-content-end">
+      &copy; Toci&Co
+    </div>
+    
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+  <script>
+    // Function to display the content for each chapter
+    function showChapter(chapter) {
+      // Reset active class on all list items
+      document.querySelectorAll('.chapter-list li').forEach(item => item.classList.remove('active'));
+      
+      // Set the clicked chapter item to active
+      document.getElementById(`chapter${chapter}`).classList.add('active');
+
+      // Update the content based on the chapter clicked
+      const content = document.getElementById('chapterContent');
+      switch(chapter) {
+        case 1:
+          content.innerHTML = `
+            <div>
+              <h5>Chapter One</h5>
+              <p>
+                Hitler's early life and formative experiences, focusing on his upbringing, family, and 
+                initial interest in politics and nationalism. He describes how these experiences shaped 
+                his worldview and ambitions for Germany's future.
+              </p>
+            </div>
+            <div class="chapter-icon">
+              <span><img src="kidhitler.jpeg" height="200px"></span>
+            </div>
+          `;
+          break;
+        case 2:
+          content.innerHTML = `
+            <div>
+              <h5>Chapter Two</h5>
+              <p>
+                Hitler's early years in Vienna, where he developed strong anti-Semitic and nationalist 
+                beliefs. He describes the city's political and social climate as influential in shaping 
+                his ideas about race, culture, and society.
+              </p>
+            </div>
+            <div class="chapter-icon">
+              <span><img src="nsdap.png" height="200px"></span>
+            </div>
+          `;
+          break;
+        case 3:
+          content.innerHTML = `
+            <div>
+              <h5>Chapter Three</h5>
+              <p>
+                Hitler reflects on his experiences during World War I, describing how the war 
+                intensified his nationalism and disdain for political opponents. He also 
+                discusses his belief in the need for strong leadership to restore Germany's power and unity.
+              </p>
+            </div>
+            <div class="chapter-icon">
+              <span><img src="ww1hitler.jpeg" height="200px"></span>
+            </div>
+          `;
+          break;
+        case 4:
+          content.innerHTML = `
+            <div>
+              <h5>Chapter Four</h5>
+              <p>
+                Hitler's contempt for the multiethnic Austro-Hungarian Empire and his deepening 
+                commitment to German nationalism. He argues that only a unified, racially "pure" 
+                state can secure Germany's strength and stability.
+              </p>
+            </div>
+            <div class="chapter-icon">
+              <span><img src="aryan.jpeg" height="200px"></span>
+            </div>
+          `;
+          break;
+      }
+    }
+  </script>
+
+</body>
+</html>
